@@ -18,7 +18,7 @@ class YamlTransformer {
   parse(content) {
     let data = jsYaml.load(content);
 
-    const flatData = flatten(data); // simplifies recursively searching child nodes
+    const flatData = flatten(data, {safe: true}); // simplifies recursively searching child nodes
 
     Object.keys(flatData)
       .filter(key => key.lastIndexOf(`.${this.options.imageKey}`) !== -1)
